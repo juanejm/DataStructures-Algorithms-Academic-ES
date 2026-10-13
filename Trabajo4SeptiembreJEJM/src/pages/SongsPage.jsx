@@ -25,7 +25,6 @@ export function SongsPage() {
     setCurrentSong(first);
   };
 
-  // ESTILOS EN LÍNEA (MODERNO)
   const containerStyle = {
     display: 'grid',
     gridTemplateColumns: '2fr 1fr',
@@ -34,7 +33,7 @@ export function SongsPage() {
   };
 
   const playerCardStyle = {
-    background: '#242424', // Un gris ligeramente más claro
+    background: '#242424', 
     padding: '30px',
     borderRadius: '16px',
     boxShadow: '0 8px 30px rgba(0,0,0,0.3)',

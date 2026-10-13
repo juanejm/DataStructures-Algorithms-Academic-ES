@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-do
 import { SongsPage } from './pages/SongsPage';
 import { BrowserPage } from './pages/BrowserPage';
 
-// Componente auxiliar para estilos de enlaces activos
 const NavLink = ({ to, children, icon }) => {
   const location = useLocation();
   const isActive = location.pathname === to;
@@ -32,7 +31,7 @@ const NavLink = ({ to, children, icon }) => {
 export default function App() {
   const headerStyle = {
     padding: '15px 30px',
-    background: '#111', // Un poco más oscuro que el fondo principal
+    background: '#111', 
     borderBottom: '1px solid #333',
     display: 'flex',
     justifyContent: 'space-between',

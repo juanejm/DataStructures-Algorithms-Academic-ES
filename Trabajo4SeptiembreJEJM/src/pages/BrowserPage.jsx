@@ -123,10 +123,6 @@ export function BrowserPage() {
         </div>
 
       </div>
-
-      <div style={{ marginTop: '30px', padding: '15px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', color: '#666', fontSize: '0.9em' }}>
-        <strong>Lógica:</strong> El historial funciona usando punteros 'next' y 'prev'. Si añades nuevas páginas (aunque aquí usamos mock data fijo), al ir 'atrás' y añadir una nueva, se sobrescribe el historial 'adelante', igual que un navegador real.
-      </div>
     </div>
   );
 }
