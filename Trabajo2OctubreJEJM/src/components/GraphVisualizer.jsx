@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Compass, ZoomIn, ZoomOut, RefreshCw, Move } from 'lucide-react';
+import { Compass, ZoomIn, ZoomOut, RefreshCw } from 'lucide-react';
 
 export function GraphVisualizer({ graphData, onSelectNode }) {
   const [nodes, setNodes] = useState([]);
@@ -9,7 +9,6 @@ export function GraphVisualizer({ graphData, onSelectNode }) {
   const draggingNodeRef = useRef(null);
   const containerRef = useRef(null);
 
-  // Inicializar y simular física de fuerzas (Force-Directed Graph)
   useEffect(() => {
     if (!graphData || !graphData.nodes.length) return;
 
@@ -17,7 +16,6 @@ export function GraphVisualizer({ graphData, onSelectNode }) {
     const centerY = 260;
     const radius = 160;
 
-    // Asignar posiciones iniciales ordenadas
     let initialNodes = graphData.nodes.map((node, index) => {
       const angle = (index / graphData.nodes.length) * 2 * Math.PI;
       return {
@@ -29,9 +27,7 @@ export function GraphVisualizer({ graphData, onSelectNode }) {
       };
     });
 
-    // Pequeña simulación de reposicionamiento por fuerzas de repulsión y atracción
     for (let iter = 0; iter < 100; iter++) {
-      // Repulsión entre nodos
       for (let i = 0; i < initialNodes.length; i++) {
         for (let j = i + 1; j < initialNodes.length; j++) {
           const dx = initialNodes[j].x - initialNodes[i].x;
@@ -47,7 +43,6 @@ export function GraphVisualizer({ graphData, onSelectNode }) {
         }
       }
 
-      // Atracción a través de las aristas (links)
       graphData.links.forEach(link => {
         const source = initialNodes.find(n => n.id === link.source);
         const target = initialNodes.find(n => n.id === link.target);
@@ -68,7 +63,6 @@ export function GraphVisualizer({ graphData, onSelectNode }) {
     setNodes(initialNodes);
   }, [graphData]);
 
-  // Manejo de Pan (Desplazar el lienzo completo)
   const handleMouseDownContainer = (e) => {
     if (draggingNodeRef.current) return;
     setIsPanning(true);
@@ -76,7 +70,6 @@ export function GraphVisualizer({ graphData, onSelectNode }) {
   };
 
   const handleMouseMove = (e) => {
-    // Si se está arrastrando un nodo específico
     if (draggingNodeRef.current) {
       const rect = containerRef.current.getBoundingClientRect();
       const mouseX = (e.clientX - rect.left - transform.x) / transform.scale;
@@ -92,7 +85,6 @@ export function GraphVisualizer({ graphData, onSelectNode }) {
       return;
     }
 
-    // Si se está desplazando el lienzo completo (Pan)
     if (isPanning) {
       setTransform(prev => ({
         ...prev,
@@ -107,7 +99,6 @@ export function GraphVisualizer({ graphData, onSelectNode }) {
     draggingNodeRef.current = null;
   };
 
-  // Manejo de Zoom con la rueda del ratón
   const handleWheel = (e) => {
     e.preventDefault();
     const zoomFactor = e.deltaY < 0 ? 1.1 : 0.9;
@@ -117,24 +108,21 @@ export function GraphVisualizer({ graphData, onSelectNode }) {
     }));
   };
 
-  // Controles de zoom y reseteo de cámara
   const handleZoomIn = () => setTransform(prev => ({ ...prev, scale: Math.min(3, prev.scale * 1.2) }));
   const handleZoomOut = () => setTransform(prev => ({ ...prev, scale: Math.max(0.4, prev.scale * 0.8) }));
   const handleResetView = () => setTransform({ x: 0, y: 0, scale: 1 });
 
   return (
     <div style={canvasContainer}>
-      {/* CABECERA VINTAGE Y CONTROLES */}
       <div style={vintageHeader}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#8B263E', fontWeight: 'bold' }}>
           <Compass size={18} />
           <span>MAPA DE CONEXIONES CARTOGRÁFICAS</span>
         </div>
 
-        {/* CONTROLES DE CAMARA Y ZOOM */}
         <div style={controlsRow}>
-          <button onClick={handleZoomIn} style={ctrlBtn} title="Acercar (Zoom In)"><ZoomIn size={16} /></button>
-          <button onClick={handleZoomOut} style={ctrlBtn} title="Alejar (Zoom Out)"><ZoomOut size={16} /></button>
+          <button onClick={handleZoomIn} style={ctrlBtn} title="Acercar"><ZoomIn size={16} /></button>
+          <button onClick={handleZoomOut} style={ctrlBtn} title="Alejar"><ZoomOut size={16} /></button>
           <button onClick={handleResetView} style={ctrlBtn} title="Centrar Mapa"><RefreshCw size={16} /></button>
         </div>
       </div>
@@ -144,7 +132,6 @@ export function GraphVisualizer({ graphData, onSelectNode }) {
         <span>Escala: {Math.round(transform.scale * 100)}%</span>
       </div>
 
-      {/* LIENZO SVG */}
       <div
         ref={containerRef}
         onMouseDown={handleMouseDownContainer}
@@ -163,7 +150,6 @@ export function GraphVisualizer({ graphData, onSelectNode }) {
         <svg width="100%" height="100%" style={{ overflow: 'visible' }}>
           <g transform={`translate(${transform.x}, ${transform.y}) scale(${transform.scale})`}>
             
-            {/* ARISTAS DE CONEXIÓN */}
             {graphData.links.map((link, i) => {
               const sourceNode = nodes.find(n => n.id === link.source);
               const targetNode = nodes.find(n => n.id === link.target);
@@ -183,7 +169,6 @@ export function GraphVisualizer({ graphData, onSelectNode }) {
               );
             })}
 
-            {/* NODOS (PERSONAS Y CIUDADES) */}
             {nodes.map((node) => {
               const isCity = node.type === 'city';
 
@@ -201,14 +186,12 @@ export function GraphVisualizer({ graphData, onSelectNode }) {
                   }}
                   style={{ cursor: 'pointer' }}
                 >
-                  {/* Sombra / Aura */}
                   <circle
                     r={isCity ? 26 : 19}
                     fill="rgba(0,0,0,0.08)"
                     transform="translate(2, 3)"
                   />
 
-                  {/* Círculo Principal del Nodo */}
                   <circle
                     r={isCity ? 24 : 17}
                     fill={isCity ? '#8B263E' : '#2A4D69'}
@@ -216,7 +199,6 @@ export function GraphVisualizer({ graphData, onSelectNode }) {
                     strokeWidth="2.5"
                   />
 
-                  {/* Icono diferenciador interno */}
                   <text
                     y="4"
                     textAnchor="middle"
@@ -226,7 +208,6 @@ export function GraphVisualizer({ graphData, onSelectNode }) {
                     {isCity ? '🏙️' : '👤'}
                   </text>
 
-                  {/* Etiqueta del Nombre */}
                   <text
                     y={isCity ? 40 : 32}
                     textAnchor="middle"

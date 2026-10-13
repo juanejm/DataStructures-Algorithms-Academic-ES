@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 export function AddNodeModal({ cities, onClose, onAddPerson, onAddCity }) {
-  const [tab, setTab] = useState('person'); // 'person' | 'city'
+  const [tab, setTab] = useState('person');
   const [personName, setPersonName] = useState('');
   const [personAge, setPersonAge] = useState('');
   const [cityId, setCityId] = useState('');

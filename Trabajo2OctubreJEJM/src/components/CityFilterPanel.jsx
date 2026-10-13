@@ -7,7 +7,6 @@ export function CityFilterPanel({ cities, selectedCityId, onSelectCity, resident
         <MapPin size={20} color="#8B263E" /> Directorio de Ciudades
       </h3>
 
-      {/* Selector de Ciudad */}
       <div style={{ marginBottom: '20px' }}>
         <label style={labelStyle}>Seleccionar Comarca / Ciudad:</label>
         <select 
@@ -22,7 +21,6 @@ export function CityFilterPanel({ cities, selectedCityId, onSelectCity, resident
         </select>
       </div>
 
-      {/* Lista de Residentes Registrados */}
       <div style={{ flex: 1 }}>
         <h4 style={subTitleStyle}>
           <Users size={16} color="#2A4D69" /> Habitantes Registrados

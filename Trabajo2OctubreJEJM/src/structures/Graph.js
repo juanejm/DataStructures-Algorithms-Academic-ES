@@ -1,10 +1,9 @@
 export class Graph {
   constructor() {
-    this.nodes = new Map(); // id -> { id, label, type, age, cityId }
-    this.adjacencyList = new Map(); // id -> Set(neighborIds)
+    this.nodes = new Map();
+    this.adjacencyList = new Map();
   }
 
-  // Agregar Nodo (Persona o Ciudad)
   addNode(node) {
     if (!this.nodes.has(node.id)) {
       this.nodes.set(node.id, node);
@@ -12,7 +11,6 @@ export class Graph {
     }
   }
 
-  // Agregar Arista / Conexión no dirigida
   addEdge(node1Id, node2Id) {
     if (this.nodes.has(node1Id) && this.nodes.has(node2Id)) {
       this.adjacencyList.get(node1Id).add(node2Id);
@@ -20,7 +18,6 @@ export class Graph {
     }
   }
 
-  // Obtener personas que viven en una ciudad especifica
   getPeopleInCity(cityId) {
     const people = [];
     for (const node of this.nodes.values()) {
@@ -31,7 +28,6 @@ export class Graph {
     return people;
   }
 
-  // Formateador para la librería react-d3-graph
   toD3Graph() {
     const nodes = [];
     const links = [];
@@ -41,7 +37,7 @@ export class Graph {
         id: node.id,
         name: node.label,
         type: node.type,
-        color: node.type === 'city' ? '#8B263E' : '#2A4D69', // Sepia Burdeos para Ciudad, Azul Antiguo para Persona
+        color: node.type === 'city' ? '#8B263E' : '#2A4D69',
         size: node.type === 'city' ? 450 : 300,
         strokeColor: '#D4AF37',
         strokeWidth: 2

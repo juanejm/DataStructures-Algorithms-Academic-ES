@@ -5,17 +5,14 @@ import { CityFilterPanel } from './components/CityFilterPanel';
 import { AddNodeModal } from './components/AddNodeModal';
 import { Compass, Plus } from 'lucide-react';
 
-// Mock Data Inicial (Ciudades y Personas con Amistades)[cite: 9]
 const graphInstance = new Graph();
 
-// Ciudades Nodos[cite: 9]
 const initialCities = [
   { id: 'c1', label: 'Popayán', type: 'city' },
   { id: 'c2', label: 'Cali', type: 'city' },
   { id: 'c3', label: 'Bogotá', type: 'city' }
 ];
 
-// Personas Nodos[cite: 9]
 const initialPeople = [
   { id: 'p1', label: 'Juan Esteban', age: 24, type: 'person', cityId: 'c1' },
   { id: 'p2', label: 'Cattleya', age: 22, type: 'person', cityId: 'c1' },
@@ -26,10 +23,9 @@ const initialPeople = [
 initialCities.forEach(c => graphInstance.addNode(c));
 initialPeople.forEach(p => {
   graphInstance.addNode(p);
-  graphInstance.addEdge(p.id, p.cityId); // Conexión Persona ➔ Ciudad[cite: 9]
+  graphInstance.addEdge(p.id, p.cityId);
 });
 
-// Amistades Persona ➔ Persona
 graphInstance.addEdge('p1', 'p2');
 graphInstance.addEdge('p1', 'p3');
 
@@ -66,7 +62,6 @@ export default function App() {
   return (
     <div style={{ minHeight: '100vh', background: '#F5EFE0', color: '#2C221E', padding: '30px 40px', fontFamily: "Georgia, serif" }}>
       
-      {/* HEADER VINTAGE */}
       <header style={{ maxWidth: '1200px', margin: '0 auto 30px auto', borderBottom: '3px double #8B263E', paddingBottom: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#8B263E', fontSize: '0.85em', fontWeight: 'bold', letterSpacing: '2px' }}>
@@ -85,16 +80,13 @@ export default function App() {
         </button>
       </header>
 
-      {/* CONTENIDO PRINCIPAL */}
       <main style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 360px', gap: '30px' }}>
         
-        {/* GRAFO D3 */}
         <GraphVisualizer 
           graphData={graphData} 
           onSelectNode={handleSelectNode} 
         />
 
-        {/* FILTRO DE CIUDADES Y HABITANTES */}
         <CityFilterPanel 
           cities={getCitiesList()} 
           selectedCityId={selectedCityId}
@@ -104,7 +96,6 @@ export default function App() {
 
       </main>
 
-      {/* MODAL */}
       {showModal && (
         <AddNodeModal 
           cities={getCitiesList()} 
