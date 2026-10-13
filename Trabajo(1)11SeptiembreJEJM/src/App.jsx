@@ -3,16 +3,13 @@ import { BookStack } from './structures/BookStack';
 import { BookForm } from './components/BookForm';
 import { BookList } from './components/BookList';
 
-// Mock Data
 const initialBooks = [
   { id: 1, name: 'Don Quijote de la Mancha', isbn: '978-8424116033', author: 'Miguel de Cervantes', editorial: 'Editorial Juventud' },
   { id: 2, name: 'El Principito', isbn: '978-0156013987', author: 'Antoine de Saint-Exupéry', editorial: 'Reynal & Hitchcock' },
   { id: 3, name: '1984', isbn: '978-0451524935', author: 'George Orwell', editorial: 'Secker & Warburg' }
 ];
 
-// Instancia de la pila
 const stackInstance = new BookStack();
-// Apilamos los datos iniciales
 initialBooks.forEach(book => stackInstance.push(book));
 
 export default function App() {
