@@ -1,5 +1,4 @@
 export function ATMQueueList({ queue, onDequeue }) {
-  // Formateador de moneda colombiana (COP)
   const formatCOP = (val) => {
     return new Intl.NumberFormat('es-CO', {
       style: 'currency',

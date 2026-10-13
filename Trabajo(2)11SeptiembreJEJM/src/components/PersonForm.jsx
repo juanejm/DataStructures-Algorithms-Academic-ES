@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-// Genera una hora de llegada aleatoria dentro de la última hora
 const getRandomArrivalDate = () => {
   const now = new Date();
   const randomMinutes = Math.floor(Math.random() * 50);
@@ -71,7 +70,6 @@ export function PersonForm({ onEnqueue }) {
   );
 }
 
-// ESTILOS NEO-BRUTALISTAS / FINTECH
 const formStyle = {
   background: '#12131C',
   padding: '25px',
