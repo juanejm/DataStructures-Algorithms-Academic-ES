@@ -23,7 +23,6 @@ export function TreeControls({ onInsert, onSearch, onReset, searchResult }) {
     <div style={panelStyle}>
       <h3 style={titleStyle}>⚡ Controles del Árbol</h3>
 
-      {/* Agregar Nodo */}
       <form onSubmit={handleInsertSubmit} style={formGroupStyle}>
         <label style={labelStyle}>Insertar Valor:</label>
         <div style={{ display: 'flex', gap: '8px' }}>
@@ -38,7 +37,6 @@ export function TreeControls({ onInsert, onSearch, onReset, searchResult }) {
         </div>
       </form>
 
-      {/* Buscar Nodo */}
       <form onSubmit={handleSearchSubmit} style={formGroupStyle}>
         <label style={labelStyle}>Buscar Valor:</label>
         <div style={{ display: 'flex', gap: '8px' }}>
@@ -53,7 +51,6 @@ export function TreeControls({ onInsert, onSearch, onReset, searchResult }) {
         </div>
       </form>
 
-      {/* Resultado de Búsqueda */}
       {searchResult !== null && (
         <div style={searchResultStyle(searchResult.found)}>
           {searchResult.found
@@ -62,7 +59,6 @@ export function TreeControls({ onInsert, onSearch, onReset, searchResult }) {
         </div>
       )}
 
-      {/* Acciones Rápidas */}
       <div style={{ marginTop: '15px', display: 'flex', gap: '10px' }}>
         <button onClick={onReset} style={btnResetStyle}>🔄 Cargar Datos de Fabrica</button>
       </div>

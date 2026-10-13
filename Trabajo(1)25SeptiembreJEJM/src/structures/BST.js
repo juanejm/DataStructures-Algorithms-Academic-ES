@@ -11,7 +11,6 @@ export class BinarySearchTree {
     this.root = null;
   }
 
-  // 1. Inserción de un número
   insert(value) {
     const newNode = new Node(value);
     if (!this.root) {
@@ -21,7 +20,7 @@ export class BinarySearchTree {
 
     let current = this.root;
     while (true) {
-      if (value === current.value) return false; // Evitar duplicados
+      if (value === current.value) return false;
       if (value < current.value) {
         if (!current.left) {
           current.left = newNode;
@@ -38,7 +37,6 @@ export class BinarySearchTree {
     }
   }
 
-  // 2. Función para verificar si un valor está en el árbol
   contains(value) {
     let current = this.root;
     while (current) {
@@ -52,7 +50,6 @@ export class BinarySearchTree {
     return false;
   }
 
-  // Recorridos
   inOrder(node = this.root, result = []) {
     if (node) {
       this.inOrder(node.left, result);
@@ -80,7 +77,6 @@ export class BinarySearchTree {
     return result;
   }
 
-  // Imprimir recorridos por consola (Requerimiento 1)
   printConsoleTraversals() {
     console.log("=== RECORRIDOS DEL ÁRBOL (BST) ===");
     console.log("Inorder:", this.inOrder().join(" -> "));
@@ -88,7 +84,6 @@ export class BinarySearchTree {
     console.log("Postorder:", this.postOrder().join(" -> "));
   }
 
-  // 3. Conversor para el formato de 'react-d3-tree' { name: 'val', children: [] }
   toD3Tree(node = this.root) {
     if (!node) return null;
 
