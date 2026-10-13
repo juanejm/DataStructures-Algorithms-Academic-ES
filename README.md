@@ -39,4 +39,7 @@ Temática visual: SaaS Modern Elegant Light Theme.
 Descripción: Representación de una red de amigos y ciudades de residencia mediante un Grafo no dirigido. Incluye visualizador SVG interactivo con simulación de fuerzas físicas, arrastre de nodos, pan & zoom y filtro de habitantes por ciudad.
 Temática visual: Vintage Cartográfico / Atlas Antiguo.
 
+🔍 Challenge 11 — Trie & Heap (Smart Search Engine)   
+Descripción: Motor de búsqueda inteligente implementado mediante una estructura de datos Trie para almacenamiento de productos con búsqueda por prefijo, combinado con un Heap para retornar de forma eficiente el Top K de elementos más populares. 
+
 👤 Autor: Juan Esteban Montes ([@juanejm](https://github.com/juanejm)) — Estudiante UAO & Desarrollador
