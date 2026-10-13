@@ -25,7 +25,6 @@ export function BrowserPage() {
     if (next) setCurrentPage(next);
   };
 
-  // ESTILOS EN LÍNEA (MODERNO)
   const browserCardStyle = {
     background: '#242424',
     padding: '25px',
@@ -70,7 +69,6 @@ export function BrowserPage() {
 
       <div style={browserCardStyle}>
         
-        {/* BARRA DE NAVEGACIÓN SIMULADA */}
         <div style={urlBarContainerStyle}>
           
           <div style={navButtonsStyle}>
@@ -96,7 +94,7 @@ export function BrowserPage() {
             <span style={{ position: 'absolute', left: '15px', top: '50%', transform: 'translateY(-50%)', color: '#555' }}>🔒</span>
             <div style={{
               background: '#000',
-              color: '#00ccff', // Color cian para la URL
+              color: '#00ccff',
               padding: '12px 15px 12px 45px',
               borderRadius: '8px',
               fontFamily: 'monospace',
@@ -111,7 +109,6 @@ export function BrowserPage() {
           </div>
         </div>
 
-        {/* CONTENIDO DE LA "PÁGINA" */}
         <div style={{ background: '#1a1a1a', padding: '40px', borderRadius: '12px', border: '1px solid #333', textAlign: 'center' }}>
           <div style={{fontSize: '50px', marginBottom: '15px'}}>📄</div>
           <p style={{ color: '#888', textTransform: 'uppercase', fontSize: '0.8em', letterSpacing: '1px', margin: '0 0 10px 0' }}>

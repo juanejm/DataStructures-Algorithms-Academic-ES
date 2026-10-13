@@ -56,7 +56,6 @@ export function SongsPage() {
       
       <div style={containerStyle}>
         
-        {/* PANEL DEL REPRODUCTOR */}
         <div style={playerCardStyle}>
           <div style={{ fontSize: '100px', marginBottom: '10px' }}>💿</div>
           <p style={{ color: '#aaa', textTransform: 'uppercase', fontSize: '0.8em', letterSpacing: '2px', margin: '0 0 10px 0' }}>
@@ -86,7 +85,6 @@ export function SongsPage() {
           </div>
         </div>
 
-        {/* PANEL DE LA LISTA COMPLETAR */}
         <div style={listCardStyle}>
           <h3 style={{ margin: '0 0 20px 0', fontSize: '1.3em', color: '#fff' }}>Siguientes en la lista:</h3>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
