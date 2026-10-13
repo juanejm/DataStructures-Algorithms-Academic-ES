@@ -5,7 +5,6 @@ import { NAryVisualizer } from './components/NAryVisualizer';
 import { AddNodeModal } from './components/AddNodeModal';
 import { ProfileView, SecurityView, BillingView, DefaultView } from './components/SamplePages';
 
-// Mock Data Inicial para el Árbol N-ario (Menús y Submenús)
 const initialMenuTree = {
   id: 'root',
   title: 'Inicio',
@@ -56,7 +55,7 @@ export default function App() {
 
   const handleAddChild = (parentId, nodeData) => {
     tree.insert(parentId, nodeData);
-    forceRender({}); // Re-renderizar la interfaz
+    forceRender({});
   };
 
   const renderComponent = () => {
@@ -72,7 +71,6 @@ export default function App() {
   return (
     <div style={{ minHeight: '100vh', background: '#F8FAFC', padding: '20px 40px', fontFamily: "'Inter', system-ui, sans-serif" }}>
       
-      {/* BARRA SUPERIOR ELEGANTE */}
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
         <div>
           <span style={{ fontSize: '0.75em', fontWeight: '800', color: '#2563EB', background: '#EFF6FF', padding: '4px 12px', borderRadius: '20px', letterSpacing: '0.5px' }}>
@@ -91,10 +89,8 @@ export default function App() {
         </button>
       </header>
 
-      {/* ÁREA PRINCIPAL LAYOUT */}
       <div style={{ display: 'flex', gap: '30px', alignItems: 'flex-start' }}>
         
-        {/* SIDEBAR N-ARIO */}
         <Sidebar 
           tree={tree} 
           activeNode={activeNode} 
@@ -102,7 +98,6 @@ export default function App() {
           onAddChild={node => setModalParent(node)}
         />
 
-        {/* CONTENIDO DE LA PÁGINA O INSPECTOR */}
         <main style={{ flex: 1 }}>
           {showTreeInspector ? (
             <div style={{ background: '#FFFFFF', padding: '24px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
@@ -115,7 +110,6 @@ export default function App() {
         </main>
       </div>
 
-      {/* MODAL PARA AGREGAR SUBMENÚS */}
       {modalParent && (
         <AddNodeModal 
           parentNode={modalParent} 
